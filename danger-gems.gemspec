@@ -2,11 +2,11 @@
 
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "gems/gem_version"
+require "danger/gems/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "danger-gems"
-  spec.version       = Gems::VERSION
+  spec.version       = DangerGems::VERSION
   spec.authors       = ["John DeSilva"]
   spec.email         = ["john@aesthetikx.info"]
   spec.description   = "A short description of danger-gems."
