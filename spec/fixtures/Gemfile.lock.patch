@@ -1,0 +1,30 @@
+commit 7e4433828eb92cb8e8d6239bf9ab93e1c767e2e8
+Author: John DeSilva <desilvjo@umich.edu>
+Date:   Fri May 10 21:47:39 2024 -0400
+
+    Install rubocop-performance
+
+diff --git a/Gemfile.lock b/Gemfile.lock
+index eabec13..f4353d2 100644
+--- a/Gemfile.lock
++++ b/Gemfile.lock
+@@ -145,6 +145,9 @@ GEM
+       rubocop (~> 1.41)
+-    rubocop-factory_bot (2.25.1)
++    rubocop-factory_bot (2.25.0)
+       rubocop (~> 1.41)
++    rubocop-performance (1.21.0)
++      rubocop (>= 1.48.1, < 2.0)
++      rubocop-ast (>= 1.31.1, < 2.0)
+-    rubocop-rake (0.6.0)
++    rubocop-rake (0.6.1)
+       rubocop (~> 1.0)
+-    rubocop-rspec (2.29.2)
+@@ -181,6 +184,7 @@ DEPENDENCIES
+   rake
+   rspec
+   rubocop
++  rubocop-performance
+   rubocop-rake
+-  rubocop-rspec
+   yard
