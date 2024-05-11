@@ -2,6 +2,10 @@
 
 # If you don't like these settings, just delete this file :)
 
+require:
+  - rubocop-rake
+  - rubocop-rspec
+
 AllCops:
   TargetRubyVersion: 2.7
   NewCops: enable

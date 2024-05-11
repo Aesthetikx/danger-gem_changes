@@ -14,6 +14,8 @@ gem "rspec", "~> 3.4"
 
 # Linting code and docs
 gem "rubocop"
+gem "rubocop-rake"
+gem "rubocop-rspec"
 gem "yard"
 
 # Makes testing easy via `bundle exec guard`
