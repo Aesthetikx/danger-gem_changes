@@ -3,6 +3,7 @@
 # If you don't like these settings, just delete this file :)
 
 require:
+  - rubocop-performance
   - rubocop-rake
   - rubocop-rspec
 
