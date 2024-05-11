@@ -6,7 +6,7 @@ $:.unshift("#{ROOT}lib".to_s)
 $:.unshift("#{ROOT}spec".to_s)
 
 require "bundler/setup"
-require "pry"
+require "debug"
 
 require "rspec"
 require "danger"
