@@ -19,20 +19,46 @@ module Danger
   # @tags monday, weekends, time, rattata
   #
   class DangerGems < Plugin
-    # An attribute that you can read/write from your Dangerfile
-    #
-    # @return   [Array<String>]
-    attr_accessor :my_attribute
-
-    # A method that you can call from your Dangerfile
-    # @return   [Array<String>]
-    #
-    def warn_on_mondays
-      warn "Trying to merge code on a Monday" if Date.today.wday == 1
-    end
-
     REMOVAL_REGEX = /^-    ([^ ]*) \((.*)\)/.freeze
     ADDITION_REGEX = /^\+    ([^ ]*) \((.*)\)/.freeze
+
+    Gem = Struct.new(:name, keyword_init: true)
+
+    Change = Struct.new(:gem, :from, :to, keyword_init: true) do
+      def initialize(gem:, from:, to:)
+        super(gem: gem, from: Version(from), to: Version(to))
+      end
+
+      def change?
+        to and from
+      end
+
+      def addition?
+        from.nil?
+      end
+
+      def removal?
+        to.nil?
+      end
+
+      def upgrade?
+        change? and to > from
+      end
+
+      def downgrade?
+        change? and to < from
+      end
+
+      private
+
+      def Version(something)
+        case something
+        when nil then nil
+        when ::Gem::Version then something
+        else ::Gem::Version.new(something)
+        end
+      end
+    end
 
     def changes
       diff = git.diff_for_file("Gemfile.lock")
@@ -72,44 +98,6 @@ module Danger
 
     def downgrades
       changes.select(&:downgrade?)
-    end
-
-    Gem = Struct.new(:name, keyword_init: true)
-
-    Change = Struct.new(:gem, :from, :to, keyword_init: true) do
-      def initialize(gem:, from:, to:)
-        super(gem: gem, from: Version(from), to: Version(to))
-      end
-
-      def change?
-        to and from
-      end
-
-      def addition?
-        from.nil?
-      end
-
-      def removal?
-        to.nil?
-      end
-
-      def upgrade?
-        change? and to > from
-      end
-
-      def downgrade?
-        change? and to < from
-      end
-
-      private
-
-      def Version(something)
-        case something
-        when nil then nil
-        when ::Gem::Version then something
-        else ::Gem::Version.new(something)
-        end
-      end
     end
   end
 end
