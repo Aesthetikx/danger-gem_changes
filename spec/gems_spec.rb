@@ -4,8 +4,8 @@ require File.expand_path("spec_helper", __dir__)
 
 module Danger
   describe Danger::DangerGems do
-    it "should be a plugin" do
-      expect(Danger::DangerGems.new(nil)).to be_a Danger::Plugin
+    it "is a plugin" do
+      expect(described_class.new(nil)).to be_a Danger::Plugin
     end
 
     #

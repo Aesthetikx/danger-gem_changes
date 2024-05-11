@@ -6,9 +6,7 @@ require "rubocop/rake_task"
 
 RSpec::Core::RakeTask.new(:specs)
 
-task default: :specs
-
-task :spec do
+task :default do
   Rake::Task["specs"].invoke
   Rake::Task["rubocop"].invoke
   Rake::Task["spec_docs"].invoke
