@@ -6,11 +6,11 @@ source "https://rubygems.org"
 gemspec
 
 # General ruby development
-gem "bundler", "~> 2.0"
-gem "rake", "~> 10.0"
+gem "bundler"
+gem "rake"
 
 # Testing support
-gem "rspec", "~> 3.4"
+gem "rspec"
 
 # Linting code and docs
 gem "rubocop"
@@ -19,11 +19,11 @@ gem "rubocop-rspec"
 gem "yard"
 
 # Makes testing easy via `bundle exec guard`
-gem "guard", "~> 2.14"
-gem "guard-rspec", "~> 4.7"
+gem "guard"
+gem "guard-rspec"
 
 # If you want to work on older builds of ruby
-gem "listen", "3.0.7"
+gem "listen"
 
 # This gives you the chance to run a REPL inside your tests
 # via:
