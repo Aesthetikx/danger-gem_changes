@@ -9,7 +9,7 @@ module GemChanges
     end
 
     def markdown
-      string = "### Gemfile.lock Changes\n"
+      string = ""
 
       string += "| Gem | Source | Changelog | Change |\n"
       string += "| --- | ------ | --------- | ------ |\n"

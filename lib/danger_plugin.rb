@@ -21,8 +21,14 @@ module Danger
   # @tags monday, weekends, time, rattata
   #
   class DangerGemChanges < Plugin
-    def summarize_changes
-      markdown GemChanges::SummaryTable.new(changes: changes).markdown
+    def summarize_changes(changes: self.changes, title: "Gemfile.lock Changes")
+      return if changes.empty?
+
+      string = "### #{title}\n"
+
+      string += GemChanges::SummaryTable.new(changes: changes).markdown
+
+      markdown string
     end
 
     def changes
