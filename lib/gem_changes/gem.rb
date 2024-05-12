@@ -16,10 +16,18 @@ module GemChanges
     end
 
     def source_code_uri
-      code = rubygems_document.at_css("a#code")
-      home = rubygems_document.at_css("a#home")
+      github_span = rubygems_document.at_css("span.github-btn")
 
-      code&.[]("href") || home&.[]("href")
+      if github_span
+        user = github_span.attr("data-user")
+        repo = github_span.attr("data-repo")
+        return "https://github.com/#{user}/#{repo}"
+      end
+
+      code = rubygems_document.at_css("a#code")&.attr("href")
+      home = rubygems_document.at_css("a#home")&.attr("href")
+
+      [code, home].compact.first
     rescue StandardError
       nil
     end
