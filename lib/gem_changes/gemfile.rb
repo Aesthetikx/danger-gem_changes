@@ -8,6 +8,8 @@ module GemChanges
     module_function def changes(git:)
       diff = git.diff_for_file("Gemfile.lock")
 
+      return [] if diff.nil?
+
       added = {}
 
       diff.patch.scan(ADDITION_REGEX).each do |match|
