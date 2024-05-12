@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "open-uri"
+
 module Danger
   # This is your plugin class. Any attributes or methods you expose here will
   # be available from within your Dangerfile.
