@@ -21,5 +21,6 @@ Gem::Specification.new do |spec|
   spec.metadata["rubygems_mfa_required"] = "true"
   spec.required_ruby_version = ">= 2.7"
   spec.add_runtime_dependency "danger-plugin-api", "~> 1.0"
+  spec.add_runtime_dependency "nokogiri", "~> 1.0"
   spec.add_runtime_dependency "open-uri"
 end
