@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.version       = GemChanges::VERSION
   spec.authors       = ["John DeSilva"]
   spec.email         = ["john@aesthetikx.info"]
-  spec.description   = "A short description of danger-gem_changes."
-  spec.summary       = "A longer description of danger-gem_changes."
+  spec.description   = "A danger plugin for helping review gem depencency changes."
+  spec.summary       = spec.description
   spec.homepage      = "https://github.com/Aesthetikx/danger-gem_changes"
   spec.license       = "MIT"
 
