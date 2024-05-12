@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 require "nokogiri"
-require "open-uri"
 
 module GemChanges
   Gem = Struct.new(:name, keyword_init: true) do
     def rubygems_uri
-      "https://rubygems.org/gems/#{name}"
+      URI.parse("https://rubygems.org/gems/#{name}")
     end
 
     def changelog_uri
@@ -39,7 +38,7 @@ module GemChanges
     end
 
     def rubygems_html
-      OpenURI.open_uri(rubygems_uri).read
+      Net::HTTP.get(rubygems_uri)
     end
   end
 end
