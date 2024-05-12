@@ -22,42 +22,6 @@ module Danger
     REMOVAL_REGEX = /^-    ([^ ]*) \((.*)\)/.freeze
     ADDITION_REGEX = /^\+    ([^ ]*) \((.*)\)/.freeze
 
-    Change = Struct.new(:gem, :from, :to, keyword_init: true) do
-      def initialize(gem:, from:, to:)
-        super(gem: gem, from: Version(from), to: Version(to))
-      end
-
-      def change?
-        to and from
-      end
-
-      def addition?
-        from.nil?
-      end
-
-      def removal?
-        to.nil?
-      end
-
-      def upgrade?
-        change? and to > from
-      end
-
-      def downgrade?
-        change? and to < from
-      end
-
-      private
-
-      def Version(something)
-        case something
-        when nil then nil
-        when ::Gem::Version then something
-        else ::Gem::Version.new(something)
-        end
-      end
-    end
-
     class ChangeTableEntry
       attr_reader :gem, :change
 
@@ -158,7 +122,7 @@ module Danger
       all_gems.map do |gem_name|
         gem = Gems::Gem.new(name: gem_name)
 
-        Change.new(gem: gem, from: removed[gem_name], to: added[gem_name])
+        Gems::Change.new(gem: gem, from: removed[gem_name], to: added[gem_name])
       end
     end
 

@@ -36,7 +36,7 @@ module Danger
 
         expect(additions).to eq(
           [
-            DangerGems::Change.new(
+            Gems::Change.new(
               gem: Gems::Gem.new(name: "rubocop-performance"),
               from: nil,
               to: "1.21.0"
@@ -50,7 +50,7 @@ module Danger
 
         expect(removals).to eq(
           [
-            DangerGems::Change.new(
+            Gems::Change.new(
               gem: Gems::Gem.new(name: "rubocop-rspec"),
               from: "2.29.2",
               to: nil
@@ -64,7 +64,7 @@ module Danger
 
         expect(upgrades).to eq(
           [
-            DangerGems::Change.new(
+            Gems::Change.new(
               gem: Gems::Gem.new(name: "rubocop-rake"),
               from: "0.6.0",
               to: "0.6.1"
@@ -78,7 +78,7 @@ module Danger
 
         expect(downgrades).to eq(
           [
-            DangerGems::Change.new(
+            Gems::Change.new(
               gem: Gems::Gem.new(name: "rubocop-factory_bot"),
               from: "2.25.1",
               to: "2.25.0"
