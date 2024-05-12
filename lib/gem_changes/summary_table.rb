@@ -49,11 +49,19 @@ module GemChanges
       end
 
       def source_link
-        "[Source](#{gem.source_code_uri})"
+        if gem.source_code_uri
+          "[Source](#{gem.source_code_uri})"
+        else
+          "???"
+        end
       end
 
       def changelog_link
-        "[Changelog](#{gem.changelog_uri})"
+        if gem.changelog_uri
+          "[Changelog](#{gem.changelog_uri})"
+        else
+          "???"
+        end
       end
 
       def change_link
