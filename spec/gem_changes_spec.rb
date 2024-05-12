@@ -3,7 +3,7 @@
 require File.expand_path("spec_helper", __dir__)
 
 module Danger
-  describe Danger::DangerGems do
+  describe Danger::DangerGemChanges do
     it "is a plugin" do
       expect(described_class.new(nil)).to be_a Danger::Plugin
     end
@@ -11,7 +11,7 @@ module Danger
     describe "with Dangerfile" do
       before do
         @dangerfile = testing_dangerfile
-        @my_plugin = @dangerfile.gems
+        @my_plugin = @dangerfile.gem_changes
 
         modified_gemfile_lock = Git::Diff::DiffFile.new(
           "base",
@@ -36,8 +36,8 @@ module Danger
 
         expect(additions).to eq(
           [
-            Gems::Change.new(
-              gem: Gems::Gem.new(name: "rubocop-performance"),
+            GemChanges::Change.new(
+              gem: GemChanges::Gem.new(name: "rubocop-performance"),
               from: nil,
               to: "1.21.0"
             )
@@ -50,8 +50,8 @@ module Danger
 
         expect(removals).to eq(
           [
-            Gems::Change.new(
-              gem: Gems::Gem.new(name: "rubocop-rspec"),
+            GemChanges::Change.new(
+              gem: GemChanges::Gem.new(name: "rubocop-rspec"),
               from: "2.29.2",
               to: nil
             )
@@ -64,8 +64,8 @@ module Danger
 
         expect(upgrades).to eq(
           [
-            Gems::Change.new(
-              gem: Gems::Gem.new(name: "rubocop-rake"),
+            GemChanges::Change.new(
+              gem: GemChanges::Gem.new(name: "rubocop-rake"),
               from: "0.6.0",
               to: "0.6.1"
             )
@@ -78,8 +78,8 @@ module Danger
 
         expect(downgrades).to eq(
           [
-            Gems::Change.new(
-              gem: Gems::Gem.new(name: "rubocop-factory_bot"),
+            GemChanges::Change.new(
+              gem: GemChanges::Gem.new(name: "rubocop-factory_bot"),
               from: "2.25.1",
               to: "2.25.0"
             )

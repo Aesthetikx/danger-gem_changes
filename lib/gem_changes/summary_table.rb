@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Gems
+module GemChanges
   class SummaryTable
     attr_reader :changes
 

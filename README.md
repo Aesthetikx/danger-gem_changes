@@ -1,15 +1,15 @@
-# danger-gems
+# danger-gem_changes
 
-A description of danger-gems.
+A description of danger-gem_changes.
 
 ## Installation
 
-    $ gem install danger-gems
+    $ gem install danger-gem_changes
 
 ## Usage
 
     Methods and attributes from this plugin are available in
-    your `Dangerfile` under the `gems` namespace.
+    your `Dangerfile` under the `gem_changes` namespace.
 
 ## Development
 

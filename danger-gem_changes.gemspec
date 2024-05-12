@@ -2,16 +2,16 @@
 
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "gems/version"
+require "gem_changes/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "danger-gems"
-  spec.version       = Gems::VERSION
+  spec.name          = "danger-gem_changes"
+  spec.version       = GemChanges::VERSION
   spec.authors       = ["John DeSilva"]
   spec.email         = ["john@aesthetikx.info"]
-  spec.description   = "A short description of danger-gems."
-  spec.summary       = "A longer description of danger-gems."
-  spec.homepage      = "https://github.com/Aesthetikx/danger-gems"
+  spec.description   = "A short description of danger-gem_changes."
+  spec.summary       = "A longer description of danger-gem_changes."
+  spec.homepage      = "https://github.com/Aesthetikx/danger-gem_changes"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

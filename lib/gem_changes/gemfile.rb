@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Gems
+module GemChanges
   module Gemfile
     REMOVAL_REGEX = /^-    ([^ ]*) \((.*)\)/.freeze
     ADDITION_REGEX = /^\+    ([^ ]*) \((.*)\)/.freeze

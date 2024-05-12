@@ -18,13 +18,13 @@ module Danger
   # @see  Aesthetikx/danger-gems
   # @tags monday, weekends, time, rattata
   #
-  class DangerGems < Plugin
+  class DangerGemChanges < Plugin
     def summarize_changes
-      markdown Gems::SummaryTable.new(changes: changes).markdown
+      markdown GemChanges::SummaryTable.new(changes: changes).markdown
     end
 
     def changes
-      Gems::Gemfile.changes(git: git)
+      GemChanges::Gemfile.changes(git: git)
     end
 
     def additions

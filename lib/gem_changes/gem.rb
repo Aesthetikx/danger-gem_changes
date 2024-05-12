@@ -3,7 +3,7 @@
 require "nokogiri"
 require "open-uri"
 
-module Gems
+module GemChanges
   Gem = Struct.new(:name, keyword_init: true) do
     def rubygems_uri
       "https://rubygems.org/gems/#{name}"
