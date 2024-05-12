@@ -14,30 +14,34 @@ module Gems
       string += "| Gem | Source | Changelog | Change |\n"
       string += "| --- | ------ | --------- | ------ |\n"
 
-      changes.each do |change|
-        string += "| "
+      rows = changes.map { |change| Row.new(change: change) }
 
-        entry = Entry.new(change: change)
-
-        string += [
-          entry.rubygems_link,
-          entry.source_link,
-          entry.changelog_link,
-          entry.change_link
-        ].join(" | ")
-
-        string += " |\n"
-      end
+      string += rows.map(&:markdown).join
 
       string
     end
 
-    class Entry
+    class Row
       attr_reader :gem, :change
 
       def initialize(change:)
         @change = change
         @gem = change.gem
+      end
+
+      def markdown
+        string = "| "
+
+        string += [
+          rubygems_link,
+          source_link,
+          changelog_link,
+          change_link
+        ].join(" | ")
+
+        string += " |\n"
+
+        string
       end
 
       def rubygems_link
