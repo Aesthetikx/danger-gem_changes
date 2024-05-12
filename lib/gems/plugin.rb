@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require "nokogiri"
-require "open-uri"
-
 module Danger
   # This is your plugin class. Any attributes or methods you expose here will
   # be available from within your Dangerfile.
@@ -24,37 +21,6 @@ module Danger
   class DangerGems < Plugin
     REMOVAL_REGEX = /^-    ([^ ]*) \((.*)\)/.freeze
     ADDITION_REGEX = /^\+    ([^ ]*) \((.*)\)/.freeze
-
-    Gem = Struct.new(:name, keyword_init: true) do
-      def rubygems_uri
-        "https://rubygems.org/gems/#{name}"
-      end
-
-      def changelog_uri
-        rubygems_document.css("a#changelog").first["href"]
-      rescue StandardError
-        nil
-      end
-
-      def source_code_uri
-        code = rubygems_document.at_css("a#code")
-        home = rubygems_document.at_css("a#home")
-
-        code&.[]("href") || home&.[]("href")
-      rescue StandardError
-        nil
-      end
-
-      private
-
-      def rubygems_document
-        @rubygems_document ||= Nokogiri::HTML(rubygems_html)
-      end
-
-      def rubygems_html
-        OpenURI.open_uri(rubygems_uri).read
-      end
-    end
 
     Change = Struct.new(:gem, :from, :to, keyword_init: true) do
       def initialize(gem:, from:, to:)
@@ -190,7 +156,7 @@ module Danger
       all_gems = added.keys | removed.keys
 
       all_gems.map do |gem_name|
-        gem = Gem.new(name: gem_name)
+        gem = Gems::Gem.new(name: gem_name)
 
         Change.new(gem: gem, from: removed[gem_name], to: added[gem_name])
       end
