@@ -24,7 +24,7 @@ RSpec.configure do |config|
   config.tty = true
 end
 
-require "danger_gems"
+require "danger_plugin"
 
 # These functions are a subset of https://github.com/danger/danger/blob/master/spec/spec_helper.rb
 # If you are expanding these files, see if it's already been done ^.
