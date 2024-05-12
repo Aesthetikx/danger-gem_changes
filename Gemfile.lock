@@ -4,7 +4,7 @@ PATH
     danger-gem_changes (0.0.1)
       danger-plugin-api (~> 1.0)
       nokogiri (~> 1.0)
-      open-uri
+      open-uri (~> 0.4)
 
 GEM
   remote: https://rubygems.org/
