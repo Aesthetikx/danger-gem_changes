@@ -14,7 +14,7 @@ module GemChanges
       string += "| Gem | Source | Changelog | Change |\n"
       string += "| --- | ------ | --------- | ------ |\n"
 
-      rows = changes.map { |change| Row.new(change: change) }
+      rows = changes.map { |change| Row.new(change:) }
 
       string += rows.map(&:markdown).join
 

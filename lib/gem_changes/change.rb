@@ -3,7 +3,7 @@
 module GemChanges
   Change = Struct.new(:gem, :from, :to, keyword_init: true) do
     def initialize(gem:, from:, to:)
-      super(gem: gem, from: Version(from), to: Version(to))
+      super(gem:, from: Version(from), to: Version(to))
     end
 
     def change?

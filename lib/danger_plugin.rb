@@ -26,13 +26,13 @@ module Danger
 
       string = "### #{title}\n"
 
-      string += GemChanges::SummaryTable.new(changes: changes).markdown
+      string += GemChanges::SummaryTable.new(changes:).markdown
 
       markdown string
     end
 
     def changes
-      GemChanges::Gemfile.changes(git: git)
+      GemChanges::Gemfile.changes(git:)
     end
 
     def additions
