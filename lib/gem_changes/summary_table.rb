@@ -11,8 +11,8 @@ module GemChanges
     def markdown
       string = ""
 
-      string += "| Gem | Source | Changelog | Change | Level |\n"
-      string += "| --- | ------ | --------- | ------ | ----- |\n"
+      string += "| Gem | Source | Changelog | Change | Version | Level |\n"
+      string += "| :-: | :----: | :-------: | :----: | :-----: | :---: |\n"
 
       rows = changes.map { |change| Row.new(change:) }
 
@@ -36,7 +36,8 @@ module GemChanges
           rubygems_link,
           source_link,
           changelog_link,
-          change_link,
+          change_description,
+          compare_link,
           level
         ].join(" | ")
 
@@ -67,8 +68,20 @@ module GemChanges
         end
       end
 
-      def change_link
-        text = change_text
+      def change_description
+        if change.addition?
+          "Added"
+        elsif change.removal?
+          "Removed"
+        elsif change.upgrade?
+          "Upgraded"
+        elsif change.downgrade?
+          "Downgraded"
+        end
+      end
+
+      def compare_link
+        text = compare_text
         link = compare_uri
 
         if link
@@ -78,25 +91,15 @@ module GemChanges
         end
       end
 
-      def level
-        if change.major?
-          "Major"
-        elsif change.minor?
-          "Minor"
-        elsif change.patch?
-          "Patch"
-        end
-      end
-
-      def change_text
+      def compare_text
         if change.addition?
-          "Added at #{change.to}"
+          change.to
         elsif change.removal?
-          "Removed at #{change.from}"
+          change.from
         elsif change.upgrade?
-          "v#{change.from} -> v#{change.to}"
+          "#{change.from} -> #{change.to}"
         elsif change.downgrade?
-          "v#{change.to} <- v#{change.from}"
+          "#{change.to} <- #{change.from}"
         else
           fail "Unknown change type"
         end
@@ -108,6 +111,16 @@ module GemChanges
         from, to = [change.from, change.to].sort
 
         "#{gem.source_code_uri}/compare/v#{from}...v#{to}"
+      end
+
+      def level
+        if change.major?
+          "Major"
+        elsif change.minor?
+          "Minor"
+        elsif change.patch?
+          "Patch"
+        end
       end
     end
   end
