@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.metadata["rubygems_mfa_required"] = "true"
   spec.metadata["source_code_uri"] = spec.homepage
   spec.metadata["issue_tracker_uri"] = "#{spec.homepage}/issues"
-  spec.required_ruby_version = ">= 2.7"
+  spec.required_ruby_version = ">= 3.1"
   spec.add_runtime_dependency "danger-plugin-api", "~> 1.0"
   spec.add_runtime_dependency "nokogiri", "~> 1.0"
 end
