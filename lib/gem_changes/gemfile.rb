@@ -27,7 +27,7 @@ module GemChanges
       all_gems.map do |gem_name|
         gem = Gem.new(name: gem_name)
 
-        Change.new(gem: gem, from: removed[gem_name], to: added[gem_name])
+        Change.new(gem:, from: removed[gem_name], to: added[gem_name])
       end
     end
   end
