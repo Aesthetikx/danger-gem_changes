@@ -97,9 +97,9 @@ module GemChanges
         elsif change.removal?
           change.from
         elsif change.upgrade?
-          "#{change.from} -> #{change.to}"
+          "#{change.from} ➚ #{change.to}"
         elsif change.downgrade?
-          "#{change.to} <- #{change.from}"
+          "#{change.from} ➘ #{change.to}"
         else
           fail "Unknown change type"
         end
