@@ -2,8 +2,8 @@
 
 module GemChanges
   module Gemfile
-    REMOVAL_REGEX = /^-    ([^ ]*) \((.*)\)/.freeze
-    ADDITION_REGEX = /^\+    ([^ ]*) \((.*)\)/.freeze
+    REMOVAL_REGEX = /^-    ([^ ]*) \((.*)\)/
+    ADDITION_REGEX = /^\+    ([^ ]*) \((.*)\)/
 
     module_function def changes(git:)
       diff = git.diff_for_file("Gemfile.lock")
