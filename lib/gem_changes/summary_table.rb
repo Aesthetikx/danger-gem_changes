@@ -11,8 +11,8 @@ module GemChanges
     def markdown
       string = ""
 
-      string += "| Gem | Source | Changelog | Change |\n"
-      string += "| --- | ------ | --------- | ------ |\n"
+      string += "| Gem | Source | Changelog | Change | Level |\n"
+      string += "| --- | ------ | --------- | ------ | ----- |\n"
 
       rows = changes.map { |change| Row.new(change:) }
 
@@ -36,13 +36,16 @@ module GemChanges
           rubygems_link,
           source_link,
           changelog_link,
-          change_link
+          change_link,
+          level
         ].join(" | ")
 
         string += " |\n"
 
         string
       end
+
+      private
 
       def rubygems_link
         "[#{gem.name}](#{gem.rubygems_uri})"
@@ -75,7 +78,15 @@ module GemChanges
         end
       end
 
-      private
+      def level
+        if change.major?
+          "Major"
+        elsif change.minor?
+          "Minor"
+        elsif change.patch?
+          "Patch"
+        end
+      end
 
       def change_text
         if change.addition?

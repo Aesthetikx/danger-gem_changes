@@ -26,6 +26,24 @@ module GemChanges
       change? and to < from
     end
 
+    def major?
+      change? &&
+        from.segments[0] && to.segments[0] &&
+        from.segments[0] != to.segments[0]
+    end
+
+    def minor?
+      change? && !major? &&
+        from.segments[1] && to.segments[1] &&
+        from.segments[1] != to.segments[1]
+    end
+
+    def patch?
+      change? && !major? && !minor? &&
+        from.segments[2] && to.segments[2] &&
+        from.segments[2] != to.segments[2]
+    end
+
     private
 
     def Version(something)
