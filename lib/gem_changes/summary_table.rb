@@ -12,7 +12,7 @@ module GemChanges
       string = ""
 
       string += "| Gem | Source | Changelog | Change | Version | Level |\n"
-      string += "| --- | ------ | --------- | ------ | ------- | ----- |\n"
+      string += "| :-: | :----: | :-------: | :----: | :-----: | :---: |\n"
 
       rows = changes.map { |change| Row.new(change:) }
 
