@@ -14,6 +14,7 @@ gem "rspec"
 
 # Linting code and docs
 gem "rubocop"
+gem "rubocop-performance"
 gem "rubocop-rake"
 gem "rubocop-rspec"
 gem "yard"
