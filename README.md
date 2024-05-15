@@ -1,8 +1,9 @@
 # danger-gem_changes
 
-This is a Danger plugin that can assist with reviews involving Gemfile
-dependency changes. It can display a helpful table with links to changelogs and
-diffs, and provides a DSL for evaluating changes to your depdencies.
+This is a [Danger](https://danger.systems/ruby/) plugin that can assist with
+reviews involving Gemfile dependency changes. It can display a helpful table
+with links to changelogs and diffs, and provides a DSL for evaluating changes
+to your depdencies.
 
 ## Installation
 
