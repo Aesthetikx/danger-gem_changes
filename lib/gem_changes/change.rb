@@ -46,7 +46,7 @@ module GemChanges
 
     private
 
-    def Version(something)
+    def Version(something) # rubocop:disable Naming/MethodName
       case something
       when nil then nil
       when ::Gem::Version then something

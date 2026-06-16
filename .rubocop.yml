@@ -152,3 +152,9 @@ Style/PercentLiteralDelimiters:
 
 Security/YAMLLoad:
   Enabled: false
+
+Style/AccessModifierDeclarations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 10
