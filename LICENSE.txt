@@ -1,4 +1,4 @@
-Copyright (c) 2024 John DeSilva <john@aesthetikx.info>
+Copyright (c) 2026 John DeSilva <john@aesthetikx.info>
 
 MIT License
 
