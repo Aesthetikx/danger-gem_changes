@@ -10,6 +10,8 @@ module Danger
   #          gem_changes.summarize_changes
   #
   # @see Aesthetikx/danger-gem_changes
+  #
+  # @tags changelogs, dependencies, gemfile, gems, updates, versions
   class DangerGemChanges < Plugin
     # Print a summary of the changes to the Gemfile.lock.
     # @param changes [Array<GemChanges::Change>] An optional list of changes to summarize, defaulting to all changes.
